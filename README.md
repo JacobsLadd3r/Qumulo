@@ -19,7 +19,7 @@ Password:
 - Now you can simply use your `qq` alias to directly call commands
 - Most will return raw JSON responses:
 
-```
+```bash
 qq fs_read_dir_aggregates --path /qumuloFS/tmp/
 {
     "files": [
@@ -43,7 +43,7 @@ qq fs_read_dir_aggregates --path /qumuloFS/tmp/
 
 - You can then use other command-line tools like `jq`, `sort`, `column` and more to adjust the display of data:
 
-```
+```bash
 qq fs_read_dir_aggregates --path /qumuloFS/tmp/ | jq -r '.files | to_entries[] | [.value.capacity_usage, .value.num_directories, .value.num_files, .value.num_symlinks, .value.type, .value.name] | @tsv' | sort -nrk1 | column -t | head
 
 1305235456  49  265  0  FS_FILE_TYPE_DIRECTORY  0-keep
@@ -56,7 +56,7 @@ qq fs_read_dir_aggregates --path /qumuloFS/tmp/ | jq -r '.files | to_entries[] |
 
 - The `qls` function from our [.qqrc.bash](https://github.com/JacobsLadd3r/Qumulo/blob/main/.qqrc.bash) can be used to get a formatted directory listing:
 
-```
+```bash
 qls /qumuloFS/tmp
 
  capacity      dirs      files   symlinks         type           name
